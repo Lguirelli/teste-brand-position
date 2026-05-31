@@ -67,6 +67,31 @@ img {
   display: block;
 }
 
+.fixed-brand-header {
+  position: fixed;
+  top: 28px;
+  left: 32px;
+  z-index: 80;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--verde-salvia);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+.fixed-brand-header::before {
+  content: "";
+  width: 34px;
+  height: 1px;
+  background: currentColor;
+  opacity: .55;
+}
+
+
 .page {
   width: min(var(--pagina-largura), calc(100% - 32px));
   margin: 0 auto;
@@ -505,6 +530,19 @@ img {
 }
 
 @media (max-width: 920px) {
+  .fixed-brand-header {
+    top: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 10px;
+    letter-spacing: .22em;
+    white-space: nowrap;
+  }
+
+  .fixed-brand-header::before {
+    width: 24px;
+  }
+
   body {
     text-align: center;
   }
