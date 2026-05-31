@@ -86,7 +86,7 @@ img {
   min-height: 76vh;
   display: grid;
   grid-template-columns: 1.02fr .98fr;
-  gap: 24px;
+  gap: 12px;
   align-items: stretch;
   margin-bottom: 72px;
 }
@@ -210,20 +210,20 @@ h1 {
 }
 
 .card-scene {
-  width: min(100%, 470px);
-  aspect-ratio: 1 / 1.08;
+  width: min(100%, 560px);
+  aspect-ratio: 1 / 1.02;
   display: grid;
   place-items: center;
-  perspective: 1500px;
-  padding: 24px;
+  perspective: 1800px;
+  padding: 8px;
 }
 
 .business-card {
-  width: min(100%, 360px);
-  aspect-ratio: 1.62 / 1;
+  width: min(100%, 460px);
+  aspect-ratio: 1.72 / 1;
   position: relative;
   transform-style: preserve-3d;
-  animation: girar-cartao 12s linear infinite;
+  animation: girar-cartao 14s linear infinite;
 }
 
 .card-face {
@@ -234,8 +234,60 @@ h1 {
   border-radius: 0;
 }
 
+.business-card::before,
+.business-card::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.business-card::before {
+  inset: auto 2% -18px 2%;
+  height: 42px;
+  background: radial-gradient(ellipse at center, rgba(49, 40, 24, .22) 0%, rgba(49, 40, 24, .12) 38%, rgba(49, 40, 24, 0) 74%);
+  filter: blur(10px);
+  transform: translateZ(-40px);
+}
+
+.business-card::after {
+  inset: 0;
+  box-shadow:
+    0 18px 18px rgba(74, 59, 35, .10),
+    0 32px 42px rgba(74, 59, 35, .12),
+    0 48px 72px rgba(74, 59, 35, .10);
+}
+
 .card-front {
-  background: transparent;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.20), rgba(255,255,255,0) 32%),
+    linear-gradient(135deg, #f2eadf 0%, #e7d8c4 100%);
+  border: 1px solid rgba(138, 153, 120, .24);
+}
+
+.card-front::before,
+.card-back::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(119, 143, 107, .018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(119, 143, 107, .015) 1px, transparent 1px);
+  background-size: 4px 4px;
+  opacity: .35;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+.card-front::after,
+.card-back::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  right: 3px;
+  bottom: 3px;
+  border: 1px solid rgba(255,255,255,.32);
+  pointer-events: none;
 }
 
 .card-front-inner,
@@ -248,18 +300,98 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 18px;
+  padding: 28px 34px;
 }
 
 .card-front-inner img {
   width: 100%;
   height: 100%;
   object-fit: contain;
+  filter: contrast(1.03) saturate(.92);
 }
 
 .card-back {
-  background: #dfcdb5;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.14), rgba(255,255,255,0) 34%),
+    #dfcdb5;
+  border: 1px solid rgba(138, 153, 120, .12);
   transform: rotateY(180deg);
+}
+
+.card-front .card-edge-right,
+.card-front .card-edge-bottom,
+.card-back .card-edge-right,
+.card-back .card-edge-bottom {
+  display: none;
+}
+
+.business-card .card-face {
+  transform-style: preserve-3d;
+}
+
+.card-front {
+  transform: translateZ(8px);
+}
+
+.card-back {
+  transform: rotateY(180deg) translateZ(8px);
+}
+
+.business-card > .card-face {
+  box-sizing: border-box;
+}
+
+.business-card .card-face::selection {
+  background: transparent;
+}
+
+.business-card {
+  filter: drop-shadow(0 10px 10px rgba(91, 72, 42, .08)) drop-shadow(0 26px 26px rgba(91, 72, 42, .10));
+}
+
+.business-card::marker {
+  content: "";
+}
+
+.business-card > .card-face {
+  outline: 0;
+}
+
+.business-card > .card-face + .card-face {
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.08);
+}
+
+.business-card::before {
+  border-radius: 50%;
+}
+
+.business-card::after {
+  border-radius: 0;
+}
+
+.business-card .card-thickness-right,
+.business-card .card-thickness-bottom {
+  position: absolute;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(191,171,145,.95), rgba(210,192,167,.96));
+}
+
+.business-card .card-thickness-right {
+  top: 7px;
+  right: -8px;
+  width: 8px;
+  height: calc(100% - 7px);
+  transform-origin: left center;
+  transform: rotateY(90deg);
+}
+
+.business-card .card-thickness-bottom {
+  left: 7px;
+  bottom: -8px;
+  width: calc(100% - 7px);
+  height: 8px;
+  transform-origin: center top;
+  transform: rotateX(-90deg);
 }
 
 @keyframes girar-cartao {
@@ -600,11 +732,11 @@ h1 {
   .card-scene {
     width: 100%;
     aspect-ratio: 1 / 1;
-    padding: 12px;
+    padding: 8px;
   }
 
   .business-card {
-    width: min(100%, 300px);
+    width: min(100%, 360px);
   }
 
   .hero-meta,
