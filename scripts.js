@@ -1,10 +1,3 @@
-/* =========================================================
-   ESTUDO DE MARCA — ISADORA GUIRELLI | TRICOLOGIA
-
-   Arquivo criado para facilitar alterações visuais.
-   Ajuste cores, espaçamentos, grids, tamanhos e efeitos aqui.
-   ========================================================= */
-
 :root {
   --bege: #DECCB4;
   --bege-suave: #E0CBB3;
