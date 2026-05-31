@@ -1,4 +1,4 @@
-// Arquivo separado para futuras alterações visuais/interativas.
-// A página não depende de JavaScript para funcionar.
+// Arquivo reservado para interações futuras.
+// A rotação 3D do cartão é feita via CSS.
 
 document.documentElement.classList.add("js-ready");
