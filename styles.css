@@ -39,27 +39,9 @@ body {
   overflow-x: hidden;
 }
 
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  opacity: .18;
-  background-image:
-    linear-gradient(rgba(32,35,31,.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(32,35,31,.035) 1px, transparent 1px);
-  background-size: 4px 4px;
-  mix-blend-mode: multiply;
-  z-index: 30;
-}
-
+body::before,
 body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background: radial-gradient(circle, transparent 58%, rgba(19,41,80,.10));
-  z-index: 31;
+  display: none;
 }
 
 img {
@@ -81,6 +63,7 @@ img {
   letter-spacing: .28em;
   text-transform: uppercase;
   pointer-events: none;
+  transform: none;
 }
 
 .fixed-brand-header::before {
@@ -532,8 +515,8 @@ img {
 @media (max-width: 920px) {
   .fixed-brand-header {
     top: 18px;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 18px;
+    transform: none;
     font-size: 10px;
     letter-spacing: .22em;
     white-space: nowrap;
